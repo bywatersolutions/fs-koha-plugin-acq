@@ -1,0 +1,60 @@
+{
+  "/acqhistory/title/{title_no}": {
+    "get": {
+      "x-mojo-to": "Com::ByWaterSolutions::AcqHistory::Controller#get_title_history",
+      "operationId": "getTitleAcqHistory",
+      "tags": ["acqhistory"],
+      "produces": [
+        "application/json"
+      ],
+      "parameters": [{
+          "name": "title_no",
+          "in": "path",
+          "description": "Titlee to return history for",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A list of contracts"
+        },
+        "404": {
+          "description": "Barcode not found"
+        },
+        "500": {
+          "description": "Internal server error"
+        }
+      }
+    }
+  },
+  "/acqhistory/vendor/{supplier_id}": {
+    "get": {
+      "x-mojo-to": "Com::ByWaterSolutions::AcqHistory::Controller#get_vendor_history",
+      "operationId": "getVendorAcqHistory",
+      "tags": ["acqhistory"],
+      "produces": [
+        "application/json"
+      ],
+      "parameters": [{
+          "name": "supplier_id",
+          "in": "path",
+          "description": "Vendor id to return history for",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A list of orders"
+        },
+        "404": {
+          "description": "Barcode not found"
+        },
+        "500": {
+          "description": "Internal server error"
+        }
+      }
+    }
+  }
+}
