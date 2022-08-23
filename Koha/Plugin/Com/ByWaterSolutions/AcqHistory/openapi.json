@@ -56,5 +56,54 @@
         }
       }
     }
+  },
+  "/update_nfl/{itemnumber}": {
+    "post": {
+      "x-mojo-to": "Com::ByWaterSolutions::AcqHistory::Controller#update_nfl",
+      "operationId": "updateItemNotForLoan",
+      "tags": ["acqhistory"],
+      "produces": [
+        "application/json"
+      ],
+      "parameters": [{
+          "name": "itemnumber",
+          "in": "path",
+          "description": "Vendor id to return history for",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "in": "body",
+          "description": "Updated notforloan status",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "notforloan": {
+                "description": "Update not for loan status",
+                "type": "integer"
+              }
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Updated status"
+        },
+        "404": {
+          "description": "Item not found"
+        },
+        "500": {
+          "description": "Internal server error"
+        }
+      },
+      "x-koha-authorization": {
+        "permissions": {
+          "editcatalogue": "edit_items"
+        }
+      }
+    }
   }
 }

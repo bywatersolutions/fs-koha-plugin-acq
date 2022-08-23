@@ -41,7 +41,7 @@ sub get_title_history {
         my $sth = $dbh->prepare($query);
         $sth->execute($biblionumber);
 
-        my $row = $sth->fetchall_arrayref();
+        my $row = $sth->fetchall_arrayref({});
 
 
         return $c->render(
@@ -70,7 +70,7 @@ sub get_vendor_history {
         my $sth = $dbh->prepare($query);
         $sth->execute($supplier_id);
 
-        my $row = $sth->fetchall_arrayref();
+        my $row = $sth->fetchall_arrayref({});
 
 
         return $c->render(
@@ -82,3 +82,32 @@ sub get_vendor_history {
         $c->unhandled_exception($_);
     };
 }
+
+sub update_nfl {
+    my $c = shift->openapi->valid_input or return;
+
+    my $itemnumber = $c->validation->param('itemnumber');
+
+    return try {
+
+        my $item = Koha::Items->find( $itemnumber );
+        return $c->render(
+            status => 404,
+            openapi => { error => "Item not found" }
+        ) unless $item;
+
+        my $new_nfl = $c->validation->param('body')->{'notforloan'};
+
+        $item->notforloan( $new_nfl )->store;
+
+        return $c->render(
+            status  => 200,
+            openapi => $item
+        );
+    }
+    catch {
+        $c->unhandled_exception($_);
+    };
+}
+
+1;
