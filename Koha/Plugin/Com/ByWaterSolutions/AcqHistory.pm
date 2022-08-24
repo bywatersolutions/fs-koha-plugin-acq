@@ -49,7 +49,7 @@ sub install {
     unless( TableExists( $ah_table ) ){
         $dbh->do( "
             CREATE TABLE `$ah_table` (
-                order_no INT(11) NOT NULL,
+                order_no INT(11) NULL,
                 barcode VARCHAR(32) NULL,
                 title_no INT(11) NULL,
                 supplier_id INT(11) NULL,
@@ -58,8 +58,8 @@ sub install {
                 gift TINYINT(1) DEFAULT NULL,
                 order_item_no INT(11) DEFAULT NULL,
                 price DECIMAL(28,2) DEFAULT NULL,
-                total_cost DECIMAL(28,2) DEFAULT 0,
-            ) ENGINE = INNODB;
+                total_cost DECIMAL(28,2) DEFAULT 0
+            ) ENGINE = INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
         " );
     }
 
