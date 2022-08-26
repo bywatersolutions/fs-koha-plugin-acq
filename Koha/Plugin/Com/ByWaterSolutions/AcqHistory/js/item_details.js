@@ -6,7 +6,7 @@ if( $("#catalog_moredetail").length > 0 ){
         if( itemnumber ){
             let nfl = '<li><span class="label">Not for loan status: </span>';
             nfl += '<select data-itemnumber="'+itemnumber+'" id="item_nfl_'+itemnumber+'">';
-            nfl += '<option value="">Choose</option>';
+            nfl += '<option value="0">None (for loan)</option>';
             nfl += '<option value="1">New copy</option>';
             nfl += '<option value="2">Staff Collection Permanent Loan</option>';
             nfl += '<option value="3">To be digitzed</option>';

@@ -13,25 +13,29 @@ if( $("#catalog_detail").length > 0 ){
                                       + '<th>Barcode</th>' 
 									  + '<th>Order item number</th>' 
                                       + '<th>Gift</th>' 
-                                      + '<th>Supplier ID</th>' 
+                                      + '<th>Supplier</th>'
                                       + '</thead>'
                                       + '<tbody>'
                                       + '</tbody>'
                                       + '</table>';
+                $("#acq_details").append('<hr><h5>OLIB Orders</h5>');
                 $("#acq_details").append(olib_orders_table);
                 let order_rows = "";
                 result.forEach(function(order,index){
                     order_rows     += '<tr>'
                                    + '<td>' + order.barcode + '</td>'
-                                   + '<td>' + order.order_item_no + '</td>'
-                                   + '<td>' + (order.gift?"Yes":"No") + '</td>'
-                                   + '<td>' + order.supplier_id + '</td>'
+                                   + '<td>' + (order.order_item_no||"-") + '</td>'
+                                   + '<td>' + (order.gift?"Yes":"") + '</td>'
+                                   + '<td>' + (order.supplier_name||"-")
+                                   //+ "(" + (order.supplier_id||"-") + ")" + '</td>'
                                    + '</tr>';
-                       let dog =$("#holdings_table").find('td:contains("'+order.barcode+'")').append(' <i class="fa fa-gift"></i>');
-                    });
+                    if( order.gift ){
+                        $("#holdings_table").find('td:contains("'+order.barcode+'")').append(' <i class="fa fa-gift"></i>');
+                    }
+                });
                     $("#olib_orders tbody").append(order_rows);
             } else {
-                $("#acq_details").append('<h2>No OLIB orders found</h2>');
+                $("#acq_details").append('<h5>No OLIB orders found</h5>');
             }
         })
         .fail(function(err){
