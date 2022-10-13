@@ -24,6 +24,7 @@ if( $("#acq_supplier").length > 0 ){
                 let olib_orders_table = '<table id="olib_orders">'
                                       + '<thead>'
                                       + '<th>Barcode</th>' 
+                                      + '<th>Title number</th>' 
 									  + '<th>Order item number</th>' 
                                       + '<th>Gift</th>' 
                                       + '<th>Supplier ID</th>' 
@@ -35,7 +36,8 @@ if( $("#acq_supplier").length > 0 ){
                 let order_rows = "";
                 result.forEach(function(order,index){
                     order_rows     += '<tr>'
-                                   + '<td>' + order.barcode + '</td>'
+                                   + '<td><a target="_blank" href="/cgi-bin/koha/catalogue/search.pl?idx=bc&q=' + order.barcode + '">' + order.barcode + '</a></td>'
+                                   + '<td><a target="_blank" href="/cgi-bin/koha/catalogue/detail.pl?biblionumber=' + order.title_no + '">' + order.title_no + '</a></td>'
                                    + '<td>' + order.order_item_no + '</td>'
                                    + '<td>' + (order.gift?"Yes":"No") + '</td>'
                                    + '<td>' + order.supplier_id + '</td>'
