@@ -7,12 +7,13 @@ if( $("#catalog_moredetail").length > 0 ){
             let nfl = '<li><span class="label">Not for loan status: </span>';
             nfl += '<select data-itemnumber="'+itemnumber+'" id="item_nfl_'+itemnumber+'">';
             nfl += '<option value="0">None (for loan)</option>';
-            nfl += '<option value="1">New copy</option>';
-            nfl += '<option value="2">Staff Collection Permanent Loan</option>';
-            nfl += '<option value="3">To be digitzed</option>';
-            nfl += '<option value="4">Storage</option>';
-            nfl += '<option value="5">In Cataloging/Transit/Process</option>';
-            nfl += '<option value="7">Waiting for Storage</option>';
+            nfl += '<option value="1">Storage</option>';
+            nfl += '<option value="2">Waiting for Storage</option>';
+            nfl += '<option value="3">Scanning</option>';
+            nfl += '<option value="4">In Transit</option>';
+            nfl += '<option value="5">Cataloging</option>';
+            nfl += '<option value="6">Security Copy</option>';
+            nfl += '<option value="7">Staff Permanent Loan</option>';
             nfl += '</select><a class="btn btn-sm nfl_update">Update</a></li>';
             let statuses = $(this).append(nfl);
         }
