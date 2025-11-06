@@ -13,7 +13,10 @@ if( $("#catalog_moredetail").length > 0 ){
             nfl += '<option value="4">In Transit</option>';
             nfl += '<option value="5">Cataloging</option>';
             nfl += '<option value="6">Security Copy</option>';
-            nfl += '<option value="7">Staff Permanent Loan</option>';
+            nfl += '<option value="9">In a Bound Volume</option>';
+            nfl += '<option value="10">To Be Scanned</option>';
+            nfl += '<option value="11">To Be Reviewed</option>';
+            nfl += '<option value="12">Vault Master</option>';
             nfl += '</select><a class="btn btn-sm nfl_update">Update</a></li>';
             let statuses = $(this).append(nfl);
         }
