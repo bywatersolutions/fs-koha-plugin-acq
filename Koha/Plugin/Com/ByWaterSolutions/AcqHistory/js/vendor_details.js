@@ -1,4 +1,4 @@
-if( $("#acq_supplier").length > 0 ){
+if( $("#acq_booksellers").length > 0 ){
 	let getUrlParameter = function getUrlParameter(sParam) {
 		let sPageURL = window.location.search.substring(1),
 				sURLVariables = sPageURL.split('&'),
